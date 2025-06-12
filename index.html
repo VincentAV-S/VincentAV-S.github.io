@@ -97,7 +97,45 @@ h2 {
   padding-bottom: 1.5em;
   margin-bottom: 2em;
   border-bottom: 1px solid #333;
-}  
+} 
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin-top: 1em;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 0.5em;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: 0.3s;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}   
   </style>
 </head>
 <body>
@@ -373,6 +411,15 @@ h2 {
       <li> Using Bloomberg Terminals and Capital IQ to research GICS Industries and Sub-Industries.</li>
        <li> Financial Statement Analysis, Porter's Five Forces Analysis, Sensitivity Analysis, Breakeven Analysis.</li>
 
+<div class="slideshow-container" id="utsa-slideshow">
+  <img class="slide utsa-slide" src="utsa1.jpg" style="display:block">
+  <img class="slide utsa-slide" src="utsa2.jpg">
+  <img class="slide utsa-slide" src="utsa3.jpg">
+  <a class="prev" onclick="plusSlides(-1, 'utsa')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 'utsa')">&#10095;</a>
+</div>
+
+        
       </div>
 
 
@@ -380,10 +427,38 @@ h2 {
       <p><strong>Assoicate of Arts in Criminal Justice</strong>, Northwest Vista College, 2011 - 2015</p>
       <p>I started this educational experience in 2011 while I was in high school (dual credit). I was set to graduate from high school in 2013, but I graduated early in 2012. I was a Criminal Justice Major because I wanted to pursue a career as an attorney.</p>
       </div>  
+
+  <div class="slideshow-container" id="nvc-slideshow">
+  <img class="slide nvc-slide" src="nvc1.jpg" style="display:block">
+  <img class="slide nvc-slide" src="nvc2.jpg">
+  <img class="slide nvc-slide" src="nvc3.jpg">
+  <a class="prev" onclick="plusSlides(-1, 'nvc')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 'nvc')">&#10095;</a>
+  </div>
+
       
       
     </section>
   </div>
 
+
+
+
+
+<script>
+let slideIndexes = {
+  utsa: 0,
+  nvc: 0
+};
+
+function plusSlides(n, key) {
+  const slides = document.getElementsByClassName(key + "-slide");
+  slideIndexes[key] = (slideIndexes[key] + n + slides.length) % slides.length;
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndexes[key]].style.display = "block";
+}
+</script>  
 </body>
 </html>
